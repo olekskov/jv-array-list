@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 public class ArrayList<T> implements List<T> {
     private static final double SIZE_MULTIPLIER = 1.5;
     private static final int DEFAULT_CAPACITY = 10;
-    private Object[] elements = {};
+    private Object[] elements;
     private int size = 0;
 
     public ArrayList(int capacity) {
