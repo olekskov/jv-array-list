@@ -39,9 +39,8 @@ public class ArrayList<T> implements List<T> {
         } else {
             rangeCheck(index);
             growIfFull();
-            Object[] newData = elements.clone();
+            arraycopy(elements, index, elements, index + 1, elements.length - index - 1);
             elements[index] = value;
-            arraycopy(newData, index, elements, index + 1, newData.length - index - 1);
             size++;
         }
     }
@@ -77,12 +76,8 @@ public class ArrayList<T> implements List<T> {
     @Override
     public T remove(T element) {
         for (int i = 0; i < size; i++) {
-            if (element == null) {
-                remove(i);
-                return null;
-            } else if (element.equals(elements[i])) {
-                remove(i);
-                return element;
+            if (element == elements[i] || element != null && element.equals(elements[i])) {
+                return remove(i);
             }
         }
         throw new NoSuchElementException("Element " + element + " does not exist");
