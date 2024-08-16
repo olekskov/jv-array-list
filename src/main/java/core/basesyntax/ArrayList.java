@@ -2,6 +2,7 @@ package core.basesyntax;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 import static java.lang.System.arraycopy;
 
@@ -76,7 +77,7 @@ public class ArrayList<T> implements List<T> {
     @Override
     public T remove(T element) {
         for (int i = 0; i < size; i++) {
-            if (element == elements[i] || element != null && element.equals(elements[i])) {
+            if (Objects.equals(element, elements[i])) {
                 return remove(i);
             }
         }
